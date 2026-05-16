@@ -136,8 +136,8 @@ export default function SubsidySection() {
               Central Government subsidy under PM Surya Ghar scheme
             </p>
 
-            <div className="border border-[var(--border-color)] rounded-xl overflow-hidden shadow-md">
-              <table className="w-full">
+            <div className="overflow-x-auto border border-[var(--border-color)] rounded-xl shadow-md">
+              <table className="min-w-full">
                 <thead>
                   <tr className="bg-[var(--blue)]">
                     <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-4 py-3">Capacity</th>
