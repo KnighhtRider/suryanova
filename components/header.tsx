@@ -172,7 +172,7 @@ export default function Header() {
                 className="flex items-center gap-2 px-4 py-2 text-[13px] font-medium text-[var(--blue)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--surface)] transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span className="hidden xl:inline">1800-123-SOLAR</span>
+                <span className="hidden xl:inline">+91-6396814058</span>
               </a>
               <Link
                 href="#calculator"
@@ -238,7 +238,7 @@ export default function Header() {
                   className="flex items-center justify-center gap-2 w-full p-3 text-[var(--blue)] border border-[var(--border-color)] rounded-lg font-medium"
                 >
                   <Phone className="w-4 h-4" />
-                  Call: 1800-123-SOLAR
+                  Call: +91-6396814058
                 </a>
                 <Link
                   href="#calculator"

@@ -80,7 +80,7 @@ export default function Footer() {
             <div className="space-y-3 mb-6">
               <a href="tel:18001234567" className="flex items-center gap-3 text-[13px] hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-[var(--orange)]" />
-                1800-123-SOLAR (Toll Free)
+                +91-6396814058 (Toll Free)
               </a>
               <a href="mailto:info@surynova.in" className="flex items-center gap-3 text-[13px] hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-[var(--orange)]" />

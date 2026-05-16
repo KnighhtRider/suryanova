@@ -76,7 +76,7 @@ export default function ContactSection() {
                     Toll Free Number
                   </div>
                   <a href="tel:18001234567" className="text-[18px] font-bold text-[var(--ink)] hover:text-[var(--blue)]">
-                    1800-123-SOLAR
+                    +91-6396814058
                   </a>
                   <div className="text-[12px] text-[var(--ink-muted)] mt-0.5">Available 24/7</div>
                 </div>

@@ -220,24 +220,6 @@ export default function SubsidySection() {
                 </div>
               ))}
             </div>
-
-            {/* Key benefits */}
-            <div className="mt-8 p-5 bg-[var(--surface)] rounded-xl border border-[var(--border-soft)]">
-              <div className="text-[12px] font-semibold text-[var(--ink-mid)] mb-3 uppercase tracking-wider">Key Benefits</div>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  "Direct bank transfer",
-                  "No middlemen",
-                  "Transparent process",
-                  "Track status online"
-                ].map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-2 text-[13px] text-[var(--ink-mid)]">
-                    <CheckCircle2 className="w-4 h-4 text-[var(--green-gov)]" />
-                    {benefit}
-                  </div>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

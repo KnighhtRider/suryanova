@@ -78,7 +78,7 @@ export default function FloatingCTA() {
                 </div>
                 <div className="text-left">
                   <div className="text-[10px] text-[var(--ink-muted)] uppercase tracking-wider font-medium">Toll Free 24x7</div>
-                  <div className="text-[15px] font-bold text-[var(--ink)]">1800-123-SOLAR</div>
+                  <div className="text-[15px] font-bold text-[var(--ink)]">+91-6396814058</div>
                 </div>
               </motion.a>
 

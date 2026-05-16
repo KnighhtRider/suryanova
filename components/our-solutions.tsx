@@ -425,7 +425,7 @@ export default function OurSolutions() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-[var(--border-color)] text-[var(--ink)] text-[14px] font-semibold rounded-xl hover:border-[var(--blue)] hover:text-[var(--blue)] transition-colors shadow-sm"
             >
               <Phone className="w-4 h-4" />
-              Call: 1800-123-SOLAR
+              Call: +91-6396814058
             </a>
             <Link
               href="#contact"
