@@ -83,8 +83,10 @@ export default function SubsidySection() {
           </div>
           <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
-                <span className="text-2xl">🇮🇳</span>
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center border border-white/30 bg-[linear-gradient(180deg,#FF9933_0_33%,#FFFFFF_33%_66%,#138808_66%_100%)] shadow-inner">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#000080]/25 text-[10px] font-bold tracking-[0.08em] text-[#000080]">
+                  IN
+                </span>
               </div>
               <div>
                 <div className="text-white/60 text-[11px] uppercase tracking-wider font-medium mb-1">

@@ -101,8 +101,8 @@ export default function SolarSystems() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-[#004C89] mb-3">
-            <span className="w-5 h-0.5 bg-[#004C89] rounded-full" />
+          <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-[var(--orange)] mb-3">
+            <span className="w-5 h-0.5 bg-[var(--orange)] rounded-full" />
             Solar System Types
           </div>
           <h2 className="font-[family-name:var(--font-syne)] text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-[var(--ink)] tracking-tight leading-tight mb-3">
