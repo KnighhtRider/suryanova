@@ -63,6 +63,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +72,24 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+    setMobileDropdown(null)
+  }
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((open) => {
+      if (open) {
+        setMobileDropdown(null)
+      }
+      return !open
+    })
+  }
+
+  const toggleMobileDropdown = (label: string) => {
+    setMobileDropdown((current) => (current === label ? null : label))
+  }
 
   return (
     <>
@@ -185,8 +204,11 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-[var(--surface)] transition-colors"
+              type="button"
+              onClick={toggleMobileMenu}
+              className="lg:hidden p-2 rounded-lg text-[var(--ink)] hover:bg-[var(--surface)] transition-colors"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -201,40 +223,92 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden fixed top-[106px] left-0 right-0 bg-white border-b border-[var(--border-color)] z-40 overflow-hidden"
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="lg:hidden fixed top-[106px] left-0 right-0 bg-white border-b border-[var(--border-color)] shadow-[0_18px_45px_rgba(15,23,42,0.12)] z-40 overflow-hidden"
           >
-            <div className="p-4 space-y-1 max-h-[70vh] overflow-y-auto">
-              {navItems.map((item) => (
-                <div key={item.label}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between p-3 rounded-lg text-[var(--ink-mid)] hover:bg-[var(--surface)] transition-colors"
-                  >
-                    <span className="font-medium">{item.label}</span>
-                    {item.dropdown && <ChevronDown className="w-4 h-4" />}
-                  </Link>
-                  {item.dropdown && (
-                    <div className="ml-4 pl-4 border-l-2 border-[var(--border-soft)] space-y-1 mt-1">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.label}
-                          href={subItem.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="flex items-center gap-3 p-2.5 rounded-lg text-sm text-[var(--ink-soft)] hover:bg-[var(--surface)] transition-colors"
+            <div className="px-4 py-3 space-y-1 max-h-[calc(100vh-106px)] overflow-y-auto">
+              {navItems.map((item) => {
+                const isOpen = mobileDropdown === item.label
+
+                return (
+                  <div key={item.label} className="rounded-xl">
+                    {item.dropdown ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => toggleMobileDropdown(item.label)}
+                          className={`flex w-full items-center justify-between gap-3 px-3 py-3 rounded-xl text-left transition-colors ${
+                            isOpen
+                              ? "bg-[var(--blue-light)] text-[var(--blue)]"
+                              : "text-[var(--ink-mid)] hover:bg-[var(--surface)]"
+                          }`}
+                          aria-expanded={isOpen}
                         >
-                          <subItem.icon className="w-4 h-4 text-[var(--blue)]" />
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                          <span className="font-semibold">{item.label}</span>
+                          <ChevronDown
+                            className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.18, ease: "easeOut" }}
+                              className="overflow-hidden"
+                            >
+                              <div className="ml-3 mt-1 mb-2 space-y-1 border-l border-[var(--border-soft)] pl-3">
+                                <Link
+                                  href={item.href}
+                                  onClick={closeMobileMenu}
+                                  className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--ink-mid)] hover:bg-[var(--surface)] transition-colors"
+                                >
+                                  View all {item.label}
+                                  <ArrowRight className="w-4 h-4 text-[var(--blue)]" />
+                                </Link>
+                                {item.dropdown.map((subItem) => {
+                                  const Icon = subItem.icon
+
+                                  return (
+                                    <Link
+                                      key={subItem.label}
+                                      href={subItem.href}
+                                      onClick={closeMobileMenu}
+                                      className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-[var(--ink-soft)] hover:bg-[var(--surface)] transition-colors"
+                                    >
+                                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--blue-dim)]">
+                                        <Icon className="w-4 h-4 text-[var(--blue)]" />
+                                      </span>
+                                      <span className="font-medium">{subItem.label}</span>
+                                    </Link>
+                                  )
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                        className="flex items-center justify-between px-3 py-3 rounded-xl text-[var(--ink-mid)] hover:bg-[var(--surface)] transition-colors"
+                      >
+                        <span className="font-semibold">{item.label}</span>
+                      </Link>
+                    )}
+                  </div>
+                )
+              })}
               
               <div className="pt-4 mt-4 border-t border-[var(--border-soft)] space-y-2">
                 <a
                   href="tel:+919876543210"
+                  onClick={closeMobileMenu}
                   className="flex items-center justify-center gap-2 w-full p-3 text-[var(--blue)] border border-[var(--border-color)] rounded-lg font-medium"
                 >
                   <Phone className="w-4 h-4" />
@@ -242,7 +316,7 @@ export default function Header() {
                 </a>
                 <Link
                   href="#calculator"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={closeMobileMenu}
                   className="flex items-center justify-center gap-2 w-full p-3 bg-[var(--orange)] text-white rounded-lg font-semibold"
                 >
                   <Calculator className="w-4 h-4" />

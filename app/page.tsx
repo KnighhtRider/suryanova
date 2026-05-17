@@ -11,7 +11,7 @@ import Testimonials from "@/components/testimonials"
 import FAQSection from "@/components/faq-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
-import FloatingCTA from "@/components/floating-cta"
+import ChatWidget from "@/components/chatbot/ChatWidget"
 
 export default function Home() {
   return (
@@ -29,7 +29,7 @@ export default function Home() {
       <FAQSection />
       <ContactSection />
       <Footer />
-      <FloatingCTA />
+      <ChatWidget />
     </main>
   )
 }

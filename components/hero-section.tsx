@@ -137,14 +137,14 @@ export default function HeroSection() {
   const BadgeIcon = currentSlideData.badgeIcon
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden bg-[#001F3F]">
       {/* Background layers */}
       {slides.map((slide, index) => (
-        <div
+        <motion.div
           key={slide.id}
-          className={`absolute inset-0 bg-gradient-to-br ${slide.bgGradient} transition-opacity duration-700 ease-out ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`absolute inset-0 bg-gradient-to-br ${slide.bgGradient}`}
+          animate={{ opacity: index === currentSlide ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         />
       ))}
       
@@ -272,20 +272,20 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.4 }}
-                    className="flex flex-wrap gap-3 pt-2"
+                    className="grid grid-cols-2 gap-2 pt-2 sm:flex sm:flex-wrap sm:gap-3"
                   >
                     <Link
                       href="#calculator"
-                      className="group inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#FF7300] text-white text-sm font-bold rounded-xl hover:bg-[#FF8519] transition-all duration-300 shadow-[0_8px_30px_rgba(255,115,0,0.3)] hover:shadow-[0_12px_40px_rgba(255,115,0,0.4)] hover:-translate-y-0.5"
+                      className="group inline-flex min-w-0 items-center justify-center gap-1.5 rounded-xl bg-[#FF7300] px-2.5 py-3 text-center text-[11px] font-bold leading-tight text-white shadow-[0_8px_30px_rgba(255,115,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FF8519] hover:shadow-[0_12px_40px_rgba(255,115,0,0.4)] sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-sm"
                     >
-                      {currentSlideData.cta}
+                      <span className="min-w-0">{currentSlideData.cta}</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
-                    <button className="group inline-flex items-center gap-2.5 px-5 py-3.5 bg-white/[0.06] text-white/70 text-sm font-medium rounded-xl border border-white/[0.1] hover:bg-white/[0.1] hover:text-white transition-all duration-300 backdrop-blur-sm">
-                      <span className="w-8 h-8 rounded-full bg-white/[0.1] flex items-center justify-center group-hover:bg-white/15 transition-colors">
-                        <Play className="w-3.5 h-3.5 ml-0.5 fill-current" />
+                    <button className="group inline-flex min-w-0 items-center justify-center gap-1.5 rounded-xl border border-white/[0.1] bg-white/[0.06] px-2 py-3 text-center text-[11px] font-medium leading-tight text-white/70 backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.1] hover:text-white sm:gap-2.5 sm:px-5 sm:py-3.5 sm:text-sm">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/[0.1] transition-colors group-hover:bg-white/15 sm:h-8 sm:w-8">
+                        <Play className="w-3 h-3 ml-0.5 fill-current sm:w-3.5 sm:h-3.5" />
                       </span>
-                      {currentSlideData.ctaSecondary}
+                      <span className="min-w-0">{currentSlideData.ctaSecondary}</span>
                     </button>
                   </motion.div>
 

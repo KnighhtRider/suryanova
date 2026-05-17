@@ -69,7 +69,7 @@ const steps = [
 
 export default function SubsidySection() {
   return (
-    <section id="subsidy" className="py-20 lg:py-28 bg-white">
+    <section id="subsidy" className="py-20 lg:py-28 bg-white overflow-x-clip">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Government Banner */}
         <motion.div 
@@ -117,9 +117,10 @@ export default function SubsidySection() {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 min-w-0">
           {/* Subsidy Table */}
           <motion.div
+            className="min-w-0"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -136,14 +137,14 @@ export default function SubsidySection() {
               Central Government subsidy under PM Surya Ghar scheme
             </p>
 
-            <div className="overflow-x-auto border border-[var(--border-color)] rounded-xl shadow-md">
-              <table className="min-w-full">
+            <div className="w-full max-w-full overflow-x-auto border border-[var(--border-color)] rounded-xl shadow-md [-webkit-overflow-scrolling:touch]">
+              <table className="min-w-[560px] sm:min-w-full">
                 <thead>
                   <tr className="bg-[var(--blue)]">
-                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-4 py-3">Capacity</th>
-                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-4 py-3">Est. Cost</th>
-                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-4 py-3">Subsidy</th>
-                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-4 py-3">You Pay</th>
+                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-3 sm:px-4 py-3">Capacity</th>
+                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-3 sm:px-4 py-3">Est. Cost</th>
+                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-3 sm:px-4 py-3">Subsidy</th>
+                    <th className="text-left text-white text-[11px] font-semibold uppercase tracking-wider px-3 sm:px-4 py-3">You Pay</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -154,12 +155,12 @@ export default function SubsidySection() {
                         row.highlight ? "bg-[var(--orange-pale)]" : i % 2 === 0 ? "bg-[#F0F6FF]" : "bg-white"
                       }`}
                     >
-                      <td className="px-4 py-3.5">
+                      <td className="px-3 sm:px-4 py-3.5">
                         <div className="font-semibold text-[var(--ink)] text-[14px]">{row.capacity}</div>
                         <div className="text-[11px] text-[var(--ink-muted)]">{row.note}</div>
                       </td>
-                      <td className="px-4 py-3.5 text-[13px] text-[var(--ink-mid)]">{row.cost}</td>
-                      <td className="px-4 py-3.5">
+                      <td className="px-3 sm:px-4 py-3.5 text-[13px] text-[var(--ink-mid)]">{row.cost}</td>
+                      <td className="px-3 sm:px-4 py-3.5">
                         <span className="font-[family-name:var(--font-syne)] font-bold text-[var(--green-gov)] text-[15px]">
                           {row.subsidy}
                         </span>
@@ -169,7 +170,7 @@ export default function SubsidySection() {
                           </span>
                         )}
                       </td>
-                      <td className="px-4 py-3.5 text-[13px] font-medium text-[var(--ink)]">{row.netCost}</td>
+                      <td className="px-3 sm:px-4 py-3.5 text-[13px] font-medium text-[var(--ink)]">{row.netCost}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -184,6 +185,7 @@ export default function SubsidySection() {
 
           {/* Process Steps */}
           <motion.div
+            className="min-w-0"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -200,16 +202,16 @@ export default function SubsidySection() {
               Simple 5-step process to claim your solar subsidy
             </p>
 
-            <div className="relative pl-10">
+            <div className="relative pl-8 sm:pl-10">
               {/* Vertical line */}
               <div className="absolute left-[15px] top-6 bottom-6 w-px bg-[var(--border-color)]" />
 
               {steps.map((item, i) => (
                 <div key={i} className="relative pb-8 last:pb-0">
-                  <div className="absolute left-[-40px] top-0 w-8 h-8 rounded-full bg-[var(--blue)] text-white text-[12px] font-bold flex items-center justify-center font-[family-name:var(--font-syne)] shadow-md z-10 ring-4 ring-white">
+                  <div className="absolute left-[-32px] sm:left-[-40px] top-0 w-8 h-8 rounded-full bg-[var(--blue)] text-white text-[12px] font-bold flex items-center justify-center font-[family-name:var(--font-syne)] shadow-md z-10 ring-4 ring-white">
                     {i + 1}
                   </div>
-                  <div className="pl-6">
+                  <div className="min-w-0 pl-4 sm:pl-6">
                     <h3 className="font-[family-name:var(--font-syne)] text-[15px] font-bold text-[var(--ink)] mb-1">
                       {item.title}
                     </h3>

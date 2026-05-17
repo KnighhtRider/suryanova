@@ -25,7 +25,7 @@ export default function FloatingCTA() {
     <>
       {/* WhatsApp Floating Button - Always Visible */}
       <motion.a
-        href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20rooftop%20solar%20installation.%20Please%20share%20details."
+        href="https://wa.me/916396814058?text=Hi!%20I%27m%20interested%20in%20rooftop%20solar%20installation.%20Please%20share%20details."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-24 right-6 z-50 group"
