@@ -71,14 +71,14 @@ const solutions = [
     title: "Solar Panel Cleaning",
     titleHindi: "सोलर पैनल क्लीनिंग",
     tagline: "Essential Service",
-    tagColor: "bg-sky-100 text-sky-700 border-sky-200",
+    tagColor: "bg-[var(--orange)]/10 text-[var(--orange)] border-[var(--orange)]/20",
     description: "Professional cleaning service to maintain peak efficiency. Dust reduces output by 15-25%. Regular cleaning ensures maximum generation.",
     descriptionHindi: "धूल से 15-25% बिजली कम बनती है। नियमित सफाई से अधिकतम बिजली बनेगी।",
     price: "₹500",
     priceNote: "per kW / visit",
-    gradient: "from-sky-500 via-cyan-500 to-teal-400",
-    shadowColor: "shadow-sky-500/20",
-    hoverShadow: "hover:shadow-sky-500/30",
+    gradient: "from-[var(--orange)] via-[#FF8519] to-[#FFB347]",
+    shadowColor: "shadow-orange-500/20",
+    hoverShadow: "hover:shadow-orange-500/30",
     features: [
       { icon: Sparkles, text: "Deionized Water Cleaning", highlight: true },
       { icon: Shield, text: "No Scratches Guaranteed" },
@@ -122,14 +122,14 @@ const solutions = [
     title: "Repair & Maintenance",
     titleHindi: "रिपेयर और मेंटेनेंस",
     tagline: "Expert Care",
-    tagColor: "bg-emerald-100 text-emerald-700 border-emerald-200",
+    tagColor: "bg-[var(--orange)]/10 text-[var(--orange)] border-[var(--orange)]/20",
     description: "Complete maintenance and repair services for all brands. Inverter issues, panel damage, wiring faults - we fix everything.",
     descriptionHindi: "इन्वर्टर, पैनल, वायरिंग - सभी ब्रांड की मरम्मत और रखरखाव।",
     price: "₹299",
     priceNote: "inspection fee (adjustable)",
-    gradient: "from-emerald-500 via-green-500 to-lime-400",
-    shadowColor: "shadow-emerald-500/20",
-    hoverShadow: "hover:shadow-emerald-500/30",
+    gradient: "from-[var(--orange)] via-[#FF8519] to-[#FFB347]",
+    shadowColor: "shadow-orange-500/20",
+    hoverShadow: "hover:shadow-orange-500/30",
     features: [
       { icon: Settings, text: "All Brands Supported", highlight: true },
       { icon: Zap, text: "Inverter Repair & Replacement" },
@@ -183,11 +183,7 @@ function SolutionCard({ solution, isExpanded, onToggle, index }: {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
-      className={`relative bg-white rounded-3xl overflow-hidden border transition-all duration-500 ${
-        solution.popular 
-          ? `border-[var(--orange)]/30 shadow-xl ${solution.shadowColor}` 
-          : `border-[var(--border-color)] shadow-lg`
-      } ${solution.hoverShadow} hover:shadow-2xl group`}
+      className={`relative bg-white rounded-3xl overflow-hidden border border-[var(--orange)]/20 shadow-xl ${solution.shadowColor} transition-all duration-500 ${solution.hoverShadow} hover:shadow-2xl group`}
     >
       {/* Popular Badge */}
       {solution.popular && (
@@ -204,7 +200,7 @@ function SolutionCard({ solution, isExpanded, onToggle, index }: {
       )}
 
       {/* Card Header */}
-      <div className={`relative p-6 pb-0 ${solution.popular ? 'pt-8' : ''}`}>
+      <div className="relative p-6 pb-0 pt-8">
         {/* Icon */}
         <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${solution.gradient} flex items-center justify-center mb-5 shadow-lg ${solution.shadowColor} group-hover:scale-105 transition-transform duration-300`}>
           <Icon className="w-8 h-8 text-white" />
@@ -291,10 +287,7 @@ function SolutionCard({ solution, isExpanded, onToggle, index }: {
                     <ul className="space-y-2">
                       {solution.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-[12.5px] text-[var(--ink-soft)]">
-                          <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
-                            solution.id === 'new-solar' ? 'text-[var(--orange)]' :
-                            solution.id === 'cleaning' ? 'text-sky-500' : 'text-emerald-500'
-                          }`} />
+                          <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-[var(--orange)]" />
                           {feature.text}
                         </li>
                       ))}
@@ -316,11 +309,7 @@ function SolutionCard({ solution, isExpanded, onToggle, index }: {
         {/* CTA Button */}
         <Link
           href={solution.ctaLink}
-          className={`mt-3 w-full flex items-center justify-center gap-2 py-4 text-[14px] font-semibold rounded-xl transition-all duration-300 group/btn ${
-            solution.popular
-              ? `bg-gradient-to-r ${solution.gradient} text-white shadow-lg ${solution.shadowColor} hover:shadow-xl hover:-translate-y-0.5`
-              : 'bg-[var(--surface)] text-[var(--ink)] border border-[var(--border-color)] hover:bg-[var(--blue)] hover:text-white hover:border-[var(--blue)]'
-          }`}
+          className={`mt-3 w-full flex items-center justify-center gap-2 py-4 text-[14px] font-semibold rounded-xl transition-all duration-300 group/btn bg-gradient-to-r ${solution.gradient} text-white shadow-lg ${solution.shadowColor} hover:shadow-xl hover:-translate-y-0.5`}
         >
           {solution.cta}
           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

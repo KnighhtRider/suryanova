@@ -111,8 +111,8 @@ const steps = [
       { text: "Start saving money!", done: true },
     ],
     deliverable: "Up to ₹78,000 in your account",
-    color: "#228B22",
-    gradient: "from-[#228B22] to-[#32CD32]",
+    color: "#FF7300",
+    gradient: "from-[#FF7300] to-[#FF9233]",
   },
 ]
 
@@ -300,7 +300,7 @@ export default function InstallationProcess() {
                       isActive 
                         ? 'bg-[var(--ink)] text-white' 
                         : isCompleted 
-                          ? 'bg-emerald-100 text-emerald-700'
+                          ? 'bg-[var(--orange)]/10 text-[var(--orange)]'
                           : 'bg-gray-100 text-gray-500'
                     }`}>
                       {isCompleted ? 'Done' : item.duration}
@@ -372,7 +372,13 @@ export default function InstallationProcess() {
                         </p>
 
                         {/* Deliverable */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-lg text-[13px] font-semibold">
+                        <div
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-semibold"
+                          style={{
+                            backgroundColor: `${steps[activeStep].color}12`,
+                            color: steps[activeStep].color,
+                          }}
+                        >
                           <CheckCircle2 className="w-4 h-4" />
                           Deliverable: {steps[activeStep].deliverable}
                         </div>
@@ -515,13 +521,19 @@ export default function InstallationProcess() {
                             <div className="space-y-2 mb-4">
                               {item.details.map((detail, j) => (
                                 <div key={j} className="flex items-center gap-2">
-                                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                                  <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: item.color }} />
                                   <span className="text-[12px] text-[var(--ink)]">{detail.text}</span>
                                 </div>
                               ))}
                             </div>
 
-                            <div className="flex items-center gap-2 px-3 py-2 bg-emerald-50 text-emerald-700 rounded-lg text-[11px] font-semibold">
+                            <div
+                              className="flex items-center gap-2 px-3 py-2 rounded-lg text-[11px] font-semibold"
+                              style={{
+                                backgroundColor: `${item.color}12`,
+                                color: item.color,
+                              }}
+                            >
                               <CheckCircle2 className="w-3.5 h-3.5" />
                               {item.deliverable}
                             </div>
