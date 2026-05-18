@@ -1,6 +1,7 @@
 import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import OurSolutions from "@/components/our-solutions"
+import OurWork from "@/components/our-work"
 import TrustedPartners from "@/components/trusted-partners"
 import SolarSystems from "@/components/solar-systems"
 import SubsidySection from "@/components/subsidy-section"
@@ -19,6 +20,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <OurSolutions />
+      <OurWork />
       <TrustedPartners />
       <SolarSystems />
       <SubsidySection />
