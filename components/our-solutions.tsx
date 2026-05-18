@@ -358,31 +358,31 @@ export default function OurSolutions() {
           </p>
         </motion.div>
 
-        {/* Quick Stats Bar */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12 p-4 bg-white rounded-2xl shadow-sm border border-[var(--border-color)]"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {[
-            { icon: Sun, value: "10,000+", label: "Solar Systems Installed" },
-            { icon: Droplets, value: "5,000+", label: "Panels Cleaned Monthly" },
-            { icon: Wrench, value: "500+", label: "Repairs Every Month" },
-            { icon: Star, value: "4.9/5", label: "Customer Rating" },
-          ].map((stat, i) => (
-            <div key={i} className="flex items-center gap-3 px-4 py-2">
-              <div className="w-10 h-10 rounded-xl bg-[var(--surface)] flex items-center justify-center">
-                <stat.icon className="w-5 h-5 text-[var(--orange)]" />
-              </div>
-              <div>
-                <div className="font-[family-name:var(--font-syne)] text-lg font-bold text-[var(--ink)]">{stat.value}</div>
-                <div className="text-[10px] text-[var(--ink-muted)] uppercase tracking-wider">{stat.label}</div>
-              </div>
-            </div>
-          ))}
-        </motion.div>
+{/* Quick Stats Bar */}
+         <motion.div
+           className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-center md:gap-4 md:gap-8 mb-12 p-4 bg-white rounded-2xl shadow-sm border border-[var(--border-color)]"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.5, delay: 0.2 }}
+         >
+           {[
+             { icon: Sun, value: "10,000+", label: "Solar Systems Installed" },
+             { icon: Droplets, value: "5,000+", label: "Panels Cleaned Monthly" },
+             { icon: Wrench, value: "500+", label: "Repairs Every Month" },
+             { icon: Star, value: "4.9/5", label: "Customer Rating" },
+           ].map((stat, i) => (
+             <div key={i} className="flex items-center gap-3 px-4 py-2">
+               <div className="w-10 h-10 rounded-xl bg-[var(--surface)] flex items-center justify-center">
+                 <stat.icon className="w-5 h-5 text-[var(--orange)]" />
+               </div>
+               <div>
+                 <div className="font-[family-name:var(--font-syne)] text-lg font-bold text-[var(--ink)]">{stat.value}</div>
+                 <div className="text-[10px] text-[var(--ink-muted)] uppercase tracking-wider">{stat.label}</div>
+               </div>
+             </div>
+           ))}
+         </motion.div>
 
         {/* Solutions Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
